@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foot Locker - Striper Challenge</title>
+    <style>
+        :root {
+            --fl-red: #E4002B;
+            --fl-black: #000000;
+            --fl-white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Conteneur principal */
+        #game-container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--fl-white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* En-tête */
+        header {
+            background: var(--fl-black);
+            color: var(--fl-white);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--fl-red);
+        }
+
+        h1 { margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        p.subtitle { margin: 5px 0 0; font-size: 0.9em; opacity: 0.8; }
+
+        /* Zone de jeu */
+        #game-area {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        /* Le Mannequin */
+        .mannequin-zone {
+            flex: 1;
+            min-width: 300px;
+            background: #eee;
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed #ccc;
+        }
+
+        .base-body {
+            width: 120px;
+            height: 350px;
+            background: #d1d1d1;
+            border-radius: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Les vêtements portés (Overlay) */
+        .worn-item {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            transition: all 0.3s ease;
+            font-size: 3rem; /* Pour les emojis, à remplacer par width/height pour images */
+        }
+        
+        .worn-head { top: 20px; }
+        .worn-torso { top: 80px; z-index: 3; }
+        .worn-legs { top: 180px; z-index: 2; }
+        .worn-feet { bottom: 10px; }
+
+        /* La Garde-robe (Items à choisir) */
+        .wardrobe {
+            flex: 1;
+            min-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            align-content: start;
+        }
+
+        .item-card {
+            background: var(--fl-white);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .item-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--fl-black);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .item-card.selected {
+            border: 2px solid var(--fl-red);
+            background-color: #fff0f0;
+        }
+
+        .item-icon { font-size: 2.5rem; display: block; margin-bottom: 10px; }
+        .item-name { font-weight: bold; font-size: 0.9rem; }
+
+        /* Formulaire FLX (Caché au début) */
+        #flx-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--fl-white);
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            border-top: 5px solid var(--fl-red);
+        }
+
+        .flx-logo { font-weight: 900; font-size: 2rem; margin-bottom: 10px; display: block;}
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button.cta-btn {
+            background: var(--fl-black);
+            color: var(--fl-white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        button.cta-btn:hover { background: #333; }
+
+        /* Écran de victoire */
+        #reward-screen {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .coupon-code {
+            border: 2px dashed var(--fl-black);
+            padding: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            background: #eee;
+            letter-spacing: 3px;
+        }
+
+        .hidden { display: none !important; }
+
+    </style>
+</head>
+<body>
+
+<div id="game-container">
+    <header>
+        <h1>Foot Locker <span style="color:var(--fl-red)">Striper</span> Ready</h1>
+        <p class="subtitle">Habillez l'employé avec la tenue officielle pour gagner -10%</p>
+    </header>
+
+    <div id="game-area">
+        <div class="mannequin-zone">
+            <div class="base-body"></div>
+            <div id="slot-head" class="worn-item worn-head"></div>
+            <div id="slot-torso" class="worn-item worn-torso"></div>
+            <div id="slot-legs" class="worn-item worn-legs"></div>
+            <div id="slot-feet" class="worn-item worn-feet"></div>
+        </div>
+
+        <div class="wardrobe">
+            <div class="item-card" onclick="equipItem('head', '❌', false)">
+                <span class="item-icon">🧢</span>
+                <span class="item-name">Casquette Bleue</span>
+            </div>
+            <div class="item-card" onclick="equipItem('torso', '👕', false)">
+                <span class="item-icon">👕</span>
+                <span class="item-name">T-shirt Uni</span>
+            </div>
+
+            <div class="item-card" onclick="equipItem('torso', '🦓', true)">
+                <span class="item-icon">🦓</span> <span class="item-name">Maillot Rayé</span>
+            </div>
+            <div class="item-card" onclick="equipItem('legs', '👖', true)">
+                <span class="item-icon">👖</span> <span class="item-name">Pantalon Noir</span>
+            </div>
+            
+             <div class="item-card" onclick="equipItem('feet', '👞', true)">
+                <span class="item-icon">👞</span> <span class="item-name">Sneakers Noires</span>
+            </div>
+            <div class="item-card" onclick="equipItem('head', '🧢', true)">
+                <span class="item-icon">🧢</span> <span class="item-name">Casquette Noire</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="reward-screen">
+        <h2>Félicitations !</h2>
+        <p>Bienvenue dans la famille FLX.</p>
+        <div class="coupon-code">STRIPER10-FLX24</div>
+        <p><small>Présentez ce code en caisse ou utilisez-le en ligne.</small></p>
+        <button class="cta-btn" onclick="location.reload()">Rejouer</button>
+    </div>
+</div>
+
+<div id="flx-modal">
+    <div class="modal-content">
+        <span class="flx-logo">FLX</span>
+        <h3>Tenue Validée ! ✅</h3>
+        <p>L'employé est prêt. Inscrivez-vous pour récupérer votre code promo.</p>
+        
+        <form onsubmit="handleFormSubmit(event)">
+            <input type="text" placeholder="Prénom" required>
+            <input type="email" placeholder="Adresse Email" required>
+            <input type="tel" placeholder="Numéro de téléphone" required>
+            <div style="text-align:left; font-size:0.8rem; margin:10px 0;">
+                <input type="checkbox" required style="width:auto;"> J'accepte les conditions FLX.
+            </div>
+            <button type="submit" class="cta-btn">Obtenir mes -10%</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // État de la tenue
+    let currentOutfit = {
+        head: false,
+        torso: false,
+        legs: false,
+        feet: false
+    };
+
+    // Fonction pour habiller le mannequin
+    function equipItem(part, icon, isCorrect) {
+        // 1. Mettre à jour le visuel sur le mannequin
+        const slot = document.getElementById(`slot-${part}`);
+        slot.innerHTML = icon; // Remplacez ceci par <img src="..."> pour de vraies images
+        
+        // Petite animation
+        slot.style.transform = "translateX(-50%) scale(1.2)";
+        setTimeout(() => slot.style.transform = "translateX(-50%) scale(1)", 200);
+
+        // 2. Enregistrer si l'item est correct
+        currentOutfit[part] = isCorrect;
+
+        // 3. Vérifier la victoire
+        checkWinCondition();
+    }
+
+    function checkWinCondition() {
+        // Vérifie si toutes les parties ont l'item CORRECT (true)
+        if (currentOutfit.head && currentOutfit.torso && currentOutfit.legs && currentOutfit.feet) {
+            setTimeout(() => {
+                showFLXForm();
+            }, 500);
+        }
+    }
+
+    function showFLXForm() {
+        document.getElementById('flx-modal').style.display = 'flex';
+    }
+
+    function handleFormSubmit(e) {
+        e.preventDefault(); // Empêche le rechargement de la page
+        
+        // Simulation d'envoi de données
+        document.getElementById('flx-modal').style.display = 'none';
+        document.getElementById('game-area').classList.add('hidden');
+        document.getElementById('reward-screen').style.display = 'block';
+        
+        // Ici, vous ajouteriez le code pour envoyer les infos à votre CRM/Base de données
+        console.log("Inscription FLX envoyée !");
+    }
+</script>
+
+</body>
+</html>

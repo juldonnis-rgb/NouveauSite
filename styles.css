@@ -1,0 +1,25 @@
+
+/* On donne une couleur de fond noire à l'en-tête */
+header {
+    background-color: black;
+    padding: 10px; /* Un peu d'espace autour */
+    justify-content: right;
+}
+
+/* On enlève les puces de la liste et on aligne les éléments */
+.menu {
+    list-style: none; /* Enlève les points devant la liste */
+    margin: 0;
+    padding: 0;
+    display: flex; /* La magie pour aligner côte à côte */
+    gap: 20px; /* Espace entre chaque onglet */
+    justify-content: center; /* Centre le menu au milieu de la page */
+}
+
+/* On style les liens (le texte) */
+.menu a {
+    color: white; /* Texte en blanc */
+    text-decoration: none; /* Enlève le soulignement */
+    font-family: sans-serif; /* Police plus moderne */
+    font-size: 18px;
+}

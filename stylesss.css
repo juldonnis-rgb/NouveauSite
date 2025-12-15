@@ -1,0 +1,96 @@
+style.css
+/* Variables CSS */
+:root {
+    --couleur-principale: #1a202c;
+    --couleur-secondaire: #4299e1;
+    --couleur-fond: #f8f9fa;
+}
+
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style du body */
+body {
+    font-family: Arial, sans-serif;
+    background: var(--couleur-fond);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Carte principale */
+.carte {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Titre principal */
+h1 {
+    color: var(--couleur-principale);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Métier */
+.metier {
+    color: var(--couleur-secondaire);
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* Section info */
+.info {
+    border-top: 2px solid var(--couleur-fond);
+    border-bottom: 2px solid var(--couleur-fond);
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+
+.info p {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #2d3748;
+}
+
+/* Section compétences */
+.competences {
+    text-align: center;
+}
+
+.competences h2 {
+    color: var(--couleur-principale);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.competences ul {
+    list-style: none;
+}
+
+.competences li {
+    background: var(--couleur-secondaire);
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+
+/* Animation au survol */
+.competences li:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site Web</title>
+    <link rel="stylesheet" href="style.css"> <!-- Lien vers le fichier CSS -->
+    <style>
+        /* Styles simples pour le contenu dynamique */
+        #contenu {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #921d1d;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        nav ul li a.active {
+            color: #007BFF;
+        }
+        /* Style général */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* En-tête */
+header {
+  background-color: #1e1e2f;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin-left: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+ Ajouter un effet au survol */
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>HeticMail</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" data-page="accueil" class="active">Accueil</a></li>
+                <li><a href="#" data-page="apropos">À propos</a></li>
+                <li><a href="#" data-page="services">Services</a></li>
+                <li><a href="#" data-page="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+<!-- Zone de contenu dynamique -->
+ <p>3 derniers mail reçus:</p>
+    <div id="contenu">
+        <ul>
+    <li>Divine</li>
+
+    </div>
+
+    <script>
+        const liens = document.querySelectorAll('nav ul li a');
+        const contenu = document.getElementById('contenu');
+
+        liens.forEach(lien => {
+            lien.addEventListener('click', function(e) {
+                e.preventDefault(); // Empêche le rechargement de la page
+
+                // Supprimer la classe active de tous les liens
+                liens.forEach(l => l.classList.remove('active'));
+                // Ajouter la classe active au lien cliqué
+                this.classList.add('active');
+
+                // Afficher le contenu selon le lien cliqué
+                const page = this.dataset.page;
+
+                if (page === 'accueil') {
+                    contenu.innerHTML = "<h2>Accueil</h2><p>Bienvenue sur la page d'accueil !</p>";
+                } else if (page === 'apropos') {
+                    contenu.innerHTML = "<h2>À propos</h2><p>Voici quelques informations sur nous.</p>";
+                } else if (page === 'services') {
+                    contenu.innerHTML = "<h2>Services</h2><p>Nous proposons développement web, design et SEO.</p>";
+                } else if (page === 'contact') {
+                    contenu.innerHTML = "<h2>Contact</h2><p>Contactez-nous par email : contact@monsite.com</p>";
+                }
+            });
+        });
+    </script>
+</body>
+

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Développeur Web</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #e6e6e6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: #58a6ff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        /* HEADER */
+        header {
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #121212;
+            border-bottom: 1px solid #2b2b2b;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 26px;
+            font-weight: 600;
+        }
+
+        nav a {
+            margin-left: 20px;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        /* HERO */
+        .hero {
+            max-width: 900px;
+            margin: 100px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .typing {
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        /* SECTIONS */
+        section {
+            max-width: 900px;
+            margin: 120px auto;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* COMPETENCES */
+        .skills-list {
+            display: flex;
+            gap: 20px;
+        }
+
+        .skill {
+            background: #1a1a1a;
+            padding: 15px 25px;
+            border-radius: 10px;
+            border: 1px solid #2b2b2b;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: scale(1.05);
+            border-color: #444;
+        }
+
+        /* PROJETS */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #181818;
+            border: 1px solid #2f2f2f;
+            padding: 20px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #3d3d3d;
+            box-shadow: 0 0 15px #00000070;
+        }
+
+        .project-card h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            opacity: 0.75;
+            line-height: 1.5;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            padding-bottom: 80px;
+        }
+
+        .contact a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            border-radius: 10px;
+            background: #1f1f1f;
+            border: 1px solid #2d2d2d;
+            font-size: 16px;
+        }
+
+        .contact a:hover {
+            background: #2a2a2a;
+        }
+
+        .linkedin-btn {
+            margin-top: 15px;
+            display: inline-block;
+            background:#0077b5;
+            padding:12px 25px;
+            border-radius: 10px;
+            color:white;
+        }
+
+        .linkedin-btn:hover{
+            opacity:0.85;
+        }
+
+        @media (max-width: 600px) {
+            .skills-list {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Mon Portfolio</h1>
+    <nav>
+        <a href="#competences">Compétences</a>
+        <a href="#projets">Projets</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <h2><span class="typing"></span></h2>
+    <p>
+        Passionné par le développement web, motivé et déterminé à apprendre chaque jour,
+        je suis actuellement à la recherche d’une <strong>alternance</strong>.
+    </p>
+</section>
+
+<!-- COMPETENCES -->
+<section id="competences">
+    <h3>Mes Compétences</h3>
+    <div class="skills-list">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">Git</div>
+    </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+    <h3>Mes Projets</h3>
+
+    <div class="projects">
+
+        <div class="project-card">
+            <h4>Mini Interface Météo (Figma)</h4>
+            <p>
+                Prototype UX/UI réalisé sur Figma.  
+                Travail sur la mise en page et l’organisation de l’information.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h4>Hero Section (HTML/CSS)</h4>
+            <p>
+                Création d’une section d’accueil moderne avec attention à la typographie
+                et aux espacements.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h4>Projet Marketing – Aigle</h4>
+            <p>
+                Analyse de marque, positionnement et construction d’un argumentaire marketing.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+    <h3>Me Contacter</h3>
+    <p>Disponible pour échanger ou programmer un entretien.</p>
+
+    <a href="mailto:contact@example.com">Envoyer un email</a>
+
+    <br><br>
+
+    <a class="linkedin-btn" href="TON-LINKEDIN-ICI" target="_blank">
+        Mon LinkedIn 🔗
+    </a>
+</section>
+
+<!-- JAVASCRIPT -->
+<script>
+    /* Effet de typing */
+    const text = "Développeur Web – 1ère année Bachelor";
+    const typingElement = document.querySelector(".typing");
+    let i = 0;
+
+    function typeEffect() {
+        if (i < text.length) {
+            typingElement.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeEffect, 55);
+        }
+    }
+    typeEffect();
+
+    /* Apparition des sections */
+    const sections = document.querySelectorAll("section");
+
+    function revealOnScroll() {
+        const triggerBottom = window.innerHeight * 0.85;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect().top;
+            if (rect < triggerBottom) {
+                section.classList.add("visible");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+</script>
+
+</body>
+</html>
+

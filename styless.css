@@ -1,0 +1,27 @@
+/* On donne une couleur de fond noire à l'en-tête */
+header {
+    background-color: rgb(13, 1, 64);
+    padding: 10px; /* Un peu d'espace autour */
+}
+
+  /* On enlève les puces de la liste et on aligne les éléments */
+.menu {
+    list-style: none; /* Enlève les points devant la liste */
+    margin: 0;
+    padding: 0;
+    display: flex; /* La magie pour aligner côte à côte */
+    gap: 20px; /* Espace entre chaque onglet */
+    justify-content: right; /* Centre le menu à droite de la page */
+}
+
+/* On style les liens (le texte) */
+.menu a {
+    color: whitesmoke; /* Texte en blanc */
+    text-decoration: none; /* Enlève le soulignement */
+    font-family: sans-serif; /* Police plus moderne */
+    font-size: 18px;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
