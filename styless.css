@@ -1,7 +1,7 @@
 /* On donne une couleur de fond noire à l'en-tête */
 header {
     background-color: rgb(13, 1, 64);
-    padding: 10px; /* Un peu d'espace autour */
+    padding: 100px; /* Un peu d'espace autour */
 }
 
   /* On enlève les puces de la liste et on aligne les éléments */

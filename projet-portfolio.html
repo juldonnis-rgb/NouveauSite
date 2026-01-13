@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style2.css">
     <title>Mon Portfolio</title>
-   <!-- ===== Ajoute le lien vers le fichier style.css ===== -->
+    <link rel="stylesheet" href="style.css">
   </head>
 <body>
 
-    <!-- ===== HEADER / NAVIGATION ===== -->
     <header>
         <div class="container">
             <nav>
                 <div class="logo">
-                    <!-- TODO MARDI HTML : Changez le nom (remplacez par VOTRE NOM) -->
-                    [Votre Nom]
+                    Razafimanazato Juldonnis
                 </div>
                 <ul class="nav-links">
                     <li><a href="#about">À propos</a></li>
@@ -27,50 +24,40 @@
         </div>
     </header>
 
-    <!-- ===== HERO SECTION ===== -->
     <section class="hero">
         <div class="container">
-            <h1>
-                <!-- TODO MARDI HTML : Changez ce titre (ex: "Je suis développeur web") -->
-                [Votre Titre Inspirant]
-            </h1>
+            <p class="hero-welcome">
+                Dévelopeur Web en formation  Motivé et passionné par l'informatique
+            </p>
             <p>
-                <!-- TODO MARDI HTML : Changez cette description (parlez de VOUS) -->
-                Je suis [votre domaine] passionné par [votre passion]
+                Bienvenue sur mon portfolio ! Je m'appelle Razafimanazato Juldonnis, un développeur web en formation. Découvrez mes compétences, projets et comment me contacter.
             </p>
             <a href="#projects" class="cta-button">Découvrir mes projets</a>
         </div>
     </section>
-
-    <!-- ===== ABOUT SECTION ===== -->
     <section class="about" id="about">
         <div class="container">
             <h2 class="section-title">À propos de moi</h2>
             
             <div class="about-content">
                 <div class="about-image">
-                    <img src="https://via.placeholder.com/400x400" alt="Photo de profil">
+                    <img src="photo portfolio.jpg"alt="Photo de profil">
                 </div>
 
                 <div class="about-text">
                     <h2>
-                        <!-- TODO MARDI HTML : Changez ce titre (ex: "Qui suis-je ?") -->
                         Qui suis-je ?
                     </h2>
                     <p>
-                        <!-- TODO MARDI HTML : Écrivez un paragraphe sur vous -->
-                        Je suis un [domaine] avec [X ans] d'expérience. J'aime [ce que vous aimez faire].
+                        Développeur web en formation (2025-2028), j'utilise les langages HTML, CSS et JavaScript afin de pouvoir trouver les solutions numériques du web de demain
                     </p>
                     <p>
-                        <!-- TODO MARDI HTML : Écrivez un deuxième paragraphe sur vous -->
-                        Mon objectif est [votre objectif]. Je travaille avec [vos outils/technologies].
+                        Mon objectif est de devenir développeur fullstack, afin d'utiliser mes compétences en front-end et back-end pour créer/développerdes applications web complètes et performantes.
                     </p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- ===== SKILLS SECTION ===== -->
     <section class="skills" id="skills">
         <div class="container">
             <h2 class="section-title">Mes Compétences</h2>
@@ -96,8 +83,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ===== PROJECTS SECTION ===== -->
     <section class="projects" id="projects">
         <div class="container">
             <h2 class="section-title">Mes Projets</h2>
@@ -123,40 +108,43 @@
             </div>
         </div>
     </section>
-
-    <!-- ===== CONTACT SECTION / FORM ===== -->
     <section class="contact" id="contact">
         <div class="container">
             <h2>Me Contacter</h2>
             
             <form class="contact-form">
                 <div class="form-group">
-                    <label for="name">Votre nom</label>
+                    <label for="name">Nom et Prénom</label>
                     <input type="text" id="name" name="name">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Votre email</label>
+                    <label for="email">Email</label>
                     <input type="email" id="email" name="email">
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Votre message</label>
+                    <label for="phone-number">Numéro de téléphone</label>
+                    <input type="tel" id="phone-number" name="phone-number">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Envoyez un message (facultatif)</label>
                     <textarea id="message" name="message"></textarea>
                 </div>
+
 
                 <button type="submit" class="submit-button">Envoyer</button>
             </form>
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>À propos</h3>
-                    <p>[Une courte phrase sur vous et votre domaine]</p>
+                    <h3>Objectif</h3>
+                    <p>Trouver les solutions numériques du web de demain</p>
                 </div>
 
                 <div class="footer-section">
@@ -169,7 +157,7 @@
                 <div class="footer-section">
                     <h3>Suivez-moi</h3>
                     <div class="social-links">
-                        <a href="#">🐙</a>
+                        <a href="#"></a>
                         <a href="#">💼</a>
                         <a href="#">🐦</a>
                     </div>
@@ -177,10 +165,11 @@
             </div>
 
             <div class="footer-bottom">
-                © 2025 [Votre Nom]. Tous droits réservés.
+                © 2025 Razafimanazato Juldonnis. Tous droits réservés.
             </div>
         </div>
     </footer>
+    
 
 </body>
 </html>
