@@ -422,6 +422,22 @@
             padding-top: 40px;
             border-top: 1px solid #e5e5e7;
         }
+        .skill-css {
+            width: 200px;
+            height: 200px;
+        }
+        .skill-js {
+            width: 200px;
+            height: 200px;
+        }
+        .logo_linkedin {
+            width: 40px;
+            height: 40px;
+        }
+        .logo_github {
+            width: 40px;
+            height: 40px;
+        }
 
  
 
